@@ -1,0 +1,31 @@
+#define _CRT_SECURE_NO_WARNINGS
+
+#include<stdlib.h>
+#include<stdio.h>
+#include<cstring>
+
+int main()
+{
+	FILE* f = fopen("in.txt", "r");
+	char str[101];
+	int sum = 0;
+	int num = 0;
+	while (fscanf(f, "%s", str) != EOF)
+	{
+		int dim = strlen(str);
+		num = 0;
+		int i = 0;
+		bool tst = false;
+		if (str[i] == '-')
+		{
+			i = 1;
+			tst = true;
+		}
+		for (;i < dim; i++)
+			num = num * 10 + (str[i] - '0');
+		if (tst == true)
+			num = -num;
+		sum += num;
+	}
+	printf("%d", sum);
+}
