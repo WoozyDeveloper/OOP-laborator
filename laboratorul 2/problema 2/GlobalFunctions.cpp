@@ -9,7 +9,7 @@ inline bool between(float grade)
 	return grade >= 1 && grade <= 10 ? true : false;
 }
 
-int nameComparison(Student s1, Student s2)
+int nameComparison(Student& s1, Student& s2)
 {
 	if (s1.GetName() > s2.GetName())
 		return 1;
@@ -18,7 +18,7 @@ int nameComparison(Student s1, Student s2)
 	return -1;
 }
 
-int mathGradeComparison(Student s1, Student s2)
+int mathGradeComparison(Student& s1, Student& s2)
 {
 	if (between(s1.GetMathGrade()) && between(s2.GetMathGrade()))
 	{
@@ -28,7 +28,7 @@ int mathGradeComparison(Student s1, Student s2)
 	}
 }
 
-int englishGradeComparison(Student s1, Student s2)
+int englishGradeComparison(Student& s1, Student& s2)
 {
 	if (between(s1.GetEnglishGrade()) && between(s2.GetEnglishGrade()))
 	{
@@ -38,7 +38,7 @@ int englishGradeComparison(Student s1, Student s2)
 	}
 }
 
-int historyGradeComparison(Student s1, Student s2)
+int historyGradeComparison(Student& s1, Student& s2)
 {
 	if (between(s1.GetHistoryGrade()) && between(s2.GetHistoryGrade()))
 	{
@@ -48,7 +48,7 @@ int historyGradeComparison(Student s1, Student s2)
 	}
 }
 
-int averageComparison(Student s1, Student s2)
+int averageComparison(Student& s1, Student& s2)
 {
 	if (s1.GetAverageGrade() == s2.GetAverageGrade())
 		return 0;
