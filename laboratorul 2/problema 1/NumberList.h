@@ -10,4 +10,7 @@ public:
                           // if count is bigger or equal to 10, the function will return false
     void Sort();          // will sort the numbers vector
     void Print();         // will print the current vector
+
+    bool Insert(int pos, int x);
+    bool RemoveNumber(int x);
 };
