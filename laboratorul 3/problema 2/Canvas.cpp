@@ -51,13 +51,10 @@ void Canvas::DrawLine(int x1, int y1, int x2, int y2, char ch)
 
 void Canvas::DrawCircle(int x, int y, int ray, char ch)
 { 
-	for (double angle = 0; angle < 2 * PI; angle += STEP)
-	{
-		double dx = ray * cos(angle);
-		double dy = ray * sin(angle);
-		if ((x + dx) >= 0 && (x + dx) < width && (y + dy) >= 0 && (y + dy) < height)
-			this->myCanvas[(int)(x + dx)][(int)(y + dy)] = ch;
-	}
+	for (int i = x - ray; i <= x + ray; i++)
+		for (int j = y - ray; j <= y + ray; j++)
+			if (i >= 0 && i < this->height && j >= 0 && j < this->width && (int)distance(i, j, x, y) == ray)
+				this->myCanvas[i][j] = ch;
 }
 
 void Canvas::FillCircle(int x, int y, int ray, char ch)
