@@ -24,6 +24,11 @@ double distance(int x1, int y1, int x2, int y2)
 	return (double)sqrt(pow(max(x1, x2) - min(x1, x2), 2) + pow(max(y1, y2) - min(y1, y2), 2));
 }
 
+void Canvas::SetPoint(int x, int y, char ch)
+{
+	this->myCanvas[x][y] = ch;
+}
+
 void Canvas::DrawLine(int x1, int y1, int x2, int y2, char ch)
 {
 	int m_new = 2 * (y2 - y1);
