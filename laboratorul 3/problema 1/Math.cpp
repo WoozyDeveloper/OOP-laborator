@@ -48,11 +48,101 @@ int Math::Add(int count, ...)// sums up a list of integers
 	va_end(params);
 	return result;
 }
+int max(int a, int b)
+{
+	return a > b ? a : b;
+}
+int min(int a, int b)
+{
+	return a < b ? a : b;
+}
 char* Math::Add(const char* a, const char* b)
 {
-	char* result = (char*)malloc((strlen(a) + strlen(b) + 1) * sizeof(char));
-	strcpy(result, a);
-	strcat(result, b);
-	result[strlen(a) + strlen(b)] = '\0';
+	char* result = new char[10];
+	for (int i = 0; i < 10; i++)
+		result[i] = ' ';
+	int m = 0;
+	char first[20], second[20];
+	strcpy(first, a); strcpy(second, b);
+	_strrev(first); 
+	_strrev(second);
+	int i;
+	for (i = 0; i < min(strlen(first),strlen(second)); i++)
+	{
+		int sum = (int)first[i] - '0' + (int)second[i] - '0';
+		if (sum + m >= 10)
+			result[i] = (char)((sum + m) % 10 + '0'), m = sum / 10;
+		else
+			result[i] = (char)sum + m + '0';
+	}
+	for (; i < max(strlen(first), strlen(second)); i++)
+	{
+		if (first[i] >= '0' && first[i] <= '9')
+		{
+			result[i] = first[i] - '0' + m + '0';
+			m = (first[i] - '0' + m) / 10;
+		}
+		if (second[i] >= '0' && second[i] <= '9')
+		{
+			result[i] = second[i] - '0' + m + '0';
+			m = (second[i] - '0' + m) / 10;
+		}
+	}
+	if (m > 0)
+		result[i] = m + '0';
+	result[i + 1] = '\0';
+	_strrev(result);
+	return result;
+}
+
+char* Math::Sub(const char* a, const char* b)
+{
+	char* result = new char[10];
+	for (int i = 0; i < 10; i++)
+		result[i] = ' ';
+	int m = 0;
+	char first[20], second[20];
+	strcpy(first, a); strcpy(second, b);
+	_strrev(first);
+	_strrev(second);
+	int i;
+	for (i = 0; i < min(strlen(first), strlen(second)); i++)
+	{
+		int dif = (int)first[i] - '0' - (int)second[i] + '0';
+		if (dif - m < 0)
+		{
+			result[i] = 10 + ((int)first[i] - '0') - m - ((int)second[i] - '0') + '0';
+			m = 1;
+		}
+		else
+			result[i] = (char)dif - m + '0';
+	}
+	for (; i < max(strlen(first), strlen(second)); i++)
+	{
+		if (first[i] >= '0' && first[i] <= '9')
+		{
+			int dif = (int)first[i] - '0';
+			if (dif - m < 0)
+			{
+				result[i] = 10 + ((int)first[i] - '0') - m + '0';
+				m = 1;
+			}
+			else
+				result[i] = (char)dif - m + '0';
+		}
+		if (second[i] >= '0' && second[i] <= '9')
+		{
+			int dif = (int)second[i] - '0';
+			if (dif - m < 0)
+			{
+				result[i] = 10 + ((int)second[i] - '0') - m + '0';
+				m = 1;
+			}
+			else
+				result[i] = (char)dif - m + '0';
+		}
+	}
+	result[i + 1] = '\0';
+	_strrev(result);
 	return result;
 }
