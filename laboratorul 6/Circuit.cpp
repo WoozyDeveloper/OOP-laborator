@@ -13,7 +13,7 @@ Circuit::Circuit()
 
 Circuit::~Circuit(){}
 
-void Circuit::ShowWhoDidNotFinish()//cu fuel
+void Circuit::ShowWhoDidNotFinish()
 {
 	std::cout << "\nCars who didn't finish the race:\n";
 	for (int i = 0; i < this->enteredCars; i++)
@@ -23,8 +23,10 @@ void Circuit::ShowWhoDidNotFinish()//cu fuel
 
 void Circuit::ShowFinalRanks()
 {
+	int place = 1;
 	for (int i = 0; i < this->enteredCars; i++)
-		std::cout << this->cars[i]->GetName() << ' ';
+		if ((this->cars[i]->GetFuelCapacity() * 100) / this->cars[i]->GetFuelConsumption() >= this->circuitLength)
+			std::cout << "Locul " << place++ << ':' << this->cars[i]->GetName() << '\n';
 }
 
 void Circuit::Race()
@@ -64,4 +66,3 @@ void Circuit::AddCar(Car* addedCar)
 	else
 		this->cars[enteredCars - 1]->SetAverageSpeed(this->cars[enteredCars - 1]->GetAverageSpeed() - this->currentWeather * 27);
 }
-
