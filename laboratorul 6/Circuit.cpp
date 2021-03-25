@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <stdlib.h>
+#include <iomanip>
 
 Circuit::Circuit()
 {
@@ -26,7 +27,9 @@ void Circuit::ShowFinalRanks()
 	int place = 1;
 	for (int i = 0; i < this->enteredCars; i++)
 		if ((this->cars[i]->GetFuelCapacity() * 100) / this->cars[i]->GetFuelConsumption() >= this->circuitLength)
-			std::cout << "Locul " << place++ << ':' << this->cars[i]->GetName() << '\n';
+		{
+			std::cout << "Locul " << place++ << ':' << this->cars[i]->GetName() << " a terminat cursa in " << std::fixed << std::setprecision(3) << (float)this->circuitLength / this->cars[i]->GetAverageSpeed() << " ore."<< '\n';
+		}
 }
 
 void Circuit::Race()
