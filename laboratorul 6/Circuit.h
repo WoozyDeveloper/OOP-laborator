@@ -16,4 +16,5 @@ public:
 	void ShowWhoDidNotFinish();
 	void Race();
 	void ShowFinalRanks();
+	void ShowEcoRanks();
 };

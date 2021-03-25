@@ -3,24 +3,9 @@
 #include "Mazda.h"
 #include <string>
 
-int Mazda::GetFuelCapacity()
-{
-	return this->fuelCapacity;
-}
-
-int Mazda::GetFuelConsumption()
-{
-	return this->fuelConsumption;
-}
-
 char* Mazda::GetName()
 {
 	return this->name;
-}
-
-int Mazda::GetAverageSpeed()
-{
-	return this->avgSpeed;
 }
 
 void Mazda::SetAverageSpeed(int speed)

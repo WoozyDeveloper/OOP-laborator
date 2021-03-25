@@ -32,6 +32,22 @@ void Circuit::ShowFinalRanks()
 		}
 }
 
+void Circuit::ShowEcoRanks()
+{
+	std::cout << "\n----------------------------------------------\nTop eco cars: ";
+	Car** copy = (Car**)malloc(this->enteredCars * sizeof(Car*));
+	for (int i = 0; i < this->enteredCars; i++)
+		copy[i] = this->cars[i];
+	for (int i = 0; i < this->enteredCars - 1; i++)
+		for (int j = i + 1; j < this->enteredCars; j++)
+			if (copy[i]->GetFuelConsumption() > copy[j]->GetFuelConsumption())
+				std::swap(copy[i], copy[j]);
+	for (int i = 0; i < this->enteredCars; i++)
+		std::cout << copy[i]->GetName() << ' ';
+	free(copy);
+	std::cout << "\n----------------------------------------------\n";
+}
+
 void Circuit::Race()
 {
 	for (int i = 0; i < this->enteredCars - 1; i++)

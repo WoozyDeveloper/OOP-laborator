@@ -3,24 +3,9 @@
 #include "Toyota.h"
 #include <string>
 
-int Toyota::GetFuelCapacity()
-{
-	return this->fuelCapacity;
-}
-
-int Toyota::GetFuelConsumption()
-{
-	return this->fuelConsumption;
-}
-
 char* Toyota::GetName()
 {
 	return this->name;
-}
-
-int Toyota::GetAverageSpeed()
-{
-	return this->avgSpeed;
 }
 
 void Toyota::SetAverageSpeed(int speed)

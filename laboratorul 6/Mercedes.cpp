@@ -3,24 +3,9 @@
 #include "Mercedes.h"
 #include <string>
 
-int Mercedes::GetFuelCapacity()
-{
-	return this->fuelCapacity;
-}
-
-int Mercedes::GetFuelConsumption()
-{
-	return this->fuelConsumption;
-}
-
 char* Mercedes::GetName()
 {
 	return this->name;
-}
-
-int Mercedes::GetAverageSpeed()
-{
-	return this->avgSpeed;
 }
 
 void Mercedes::SetAverageSpeed(int speed)

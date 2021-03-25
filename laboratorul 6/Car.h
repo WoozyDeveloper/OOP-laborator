@@ -10,7 +10,13 @@ public:
 	virtual void SetFuelConsumption(int consumption) = 0;
 
 	virtual char* GetName() = 0;
-	virtual int GetAverageSpeed() = 0;
-	virtual int GetFuelCapacity() = 0;
-	virtual int GetFuelConsumption() = 0;
+	virtual int GetAverageSpeed() {
+		return avgSpeed;
+	}
+	virtual int GetFuelCapacity() {
+		return fuelCapacity;
+	}
+	virtual int GetFuelConsumption() {
+		return fuelConsumption;
+	}
 };

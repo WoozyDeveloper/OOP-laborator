@@ -17,7 +17,11 @@ int main()
 	c.AddCar(new Mazda());
 	c.AddCar(new Ford());
 	c.Race();
+	c.ShowEcoRanks();
 	c.ShowFinalRanks();
+
+	
 	c.ShowWhoDidNotFinish();
+	
 	return 0;
 }

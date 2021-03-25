@@ -3,24 +3,9 @@
 #include "Ford.h"
 #include <string>
 
-int Ford::GetFuelCapacity()
-{
-	return this->fuelCapacity;
-}
-
-int Ford::GetFuelConsumption()
-{
-	return this->fuelConsumption;
-}
-
 char* Ford::GetName()
 {
 	return this->name;
-}
-
-int Ford::GetAverageSpeed()
-{
-	return this->avgSpeed;
 }
 
 void Ford::SetAverageSpeed(int speed)

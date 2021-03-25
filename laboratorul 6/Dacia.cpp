@@ -3,25 +3,11 @@
 #include "Dacia.h"
 #include <string>
 
-int Dacia::GetFuelCapacity()
-{
-	return this->fuelCapacity;
-}
-
-int Dacia::GetFuelConsumption()
-{
-	return this->fuelConsumption;
-}
-
 char* Dacia::GetName()
 {
 	return this->name;
 }
 
-int Dacia::GetAverageSpeed()
-{
-	return this->avgSpeed;
-}
 
 void Dacia::SetAverageSpeed(int speed)
 {
