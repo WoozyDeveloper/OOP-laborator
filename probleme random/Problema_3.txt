@@ -1,0 +1,83 @@
+/*
+Să se scrie programul care citeşte de la tastatură un şir de maxim 10 caractere şi care, pe baza 
+clasei implementate anterior, efectuează asupra şirului de intrare operaţiile definite în cadrul clasei.
+*/
+
+// main
+
+#include "strClass.h"
+#include <iostream>
+using namespace std;
+int main()
+{
+    char sir[11];
+    cin.get(sir, 11);
+    strClass a(sir);//4
+    cout << a.lungimeSir()<<'\n';//6
+    cout << a.ultimulCaracterIndex('a')<<'\n';//4
+    cout << a.majuscule()<<'\n';
+    cout << a.minuscule() << '\n';
+    cout << a.nrAparitiiCar('a');
+}
+
+//strClass.h
+
+
+#pragma once
+#define _CRT_SECURE_NO_WARNINGS
+#include <string>
+
+class strClass
+{
+private:
+    char word[50];
+public:
+    strClass(const char* x)
+    {
+        strcpy(word, x);
+    }
+    
+    int lungimeSir()
+    {
+        int lung = 0;
+        while (word[lung] != '\0')
+            lung++;
+        return lung;
+    }
+    
+    int ultimulCaracterIndex(char c)
+    {
+        int dim = lungimeSir();
+        int index = -1;
+        for (int i = 0; i < dim; i++)
+            if (word[i] == c)
+                index = i;
+        return index;
+    }
+    char* majuscule()
+    {
+        int dim = lungimeSir();
+        for (int i = 0; i < dim; i++)
+            if (word[i] >= 'a' && word[i] <= 'z')
+                word[i] = word[i] - 'a' + 'A';
+        return word;
+    }
+    char* minuscule()
+    {
+        int dim = lungimeSir();
+        for (int i = 0; i < dim; i++)
+            if (word[i] >= 'A' && word[i] <= 'Z')
+                word[i] = word[i] - 'A' + 'a';
+        return word;
+    }
+    
+    int nrAparitiiCar(char c)
+    {
+        int aparitii = 0;
+        int dim = lungimeSir();
+        for (int i = 0; i < dim; i++)
+            if (word[i] == c)
+                aparitii++;
+        return aparitii;
+    }
+};

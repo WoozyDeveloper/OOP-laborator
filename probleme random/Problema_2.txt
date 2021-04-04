@@ -1,0 +1,85 @@
+/*
+Să se definească o clasă numită myString (într-un fişier numit strClass.h) care să fie compusă 
+din metodele specifice care efectuează următoarele operaţii pe şiruri de caractere:
+- determină lungimea şirului primit la intrare.
+- determină ultima poziţie de apariţie a unui anumit caracter din şirul de intrare.
+- returnează şirul primit la intrare, scris cu caractere majuscule.
+- returnează şirul primit la intrare, scris cu caractere minuscule.
+- returnează numărul de apariţii ale unui anumit caracter din şirul primit.
+*/
+
+//main
+
+#include "strClass.h"
+#include <iostream>
+using namespace std;
+int main()
+{
+    strClass a("ababab");//4
+    cout << a.lungimeSir()<<'\n';//6
+    cout << a.ultimulCaracterIndex('a')<<'\n';//3
+    cout << a.majuscule()<<'\n';
+    cout << a.minuscule() << '\n';
+    cout << a.nrAparitiiCar('r');
+}
+
+//strClass.h
+
+#pragma once
+#define _CRT_SECURE_NO_WARNINGS
+#include <string>
+
+class strClass
+{
+private:
+    char word[50];
+public:
+    strClass(const char* x)
+    {
+        strcpy(word, x);
+    }
+    
+    int lungimeSir()
+    {
+        int lung = 0;
+        while (word[lung] != '\0')
+            lung++;
+        return lung;
+    }
+    
+    int ultimulCaracterIndex(char c)
+    {
+        int dim = lungimeSir();
+        int index = -1;
+        for (int i = 0; i < dim; i++)
+            if (word[i] == c)
+                index = i;
+        return index;
+    }
+    char* majuscule()
+    {
+        int dim = lungimeSir();
+        for (int i = 0; i < dim; i++)
+            if (word[i] >= 'a' && word[i] <= 'z')
+                word[i] = word[i] - 'a' + 'A';
+        return word;
+    }
+    char* minuscule()
+    {
+        int dim = lungimeSir();
+        for (int i = 0; i < dim; i++)
+            if (word[i] >= 'A' && word[i] <= 'Z')
+                word[i] = word[i] - 'A' + 'a';
+        return word;
+    }
+    
+    int nrAparitiiCar(char c)
+    {
+        int aparitii = 0;
+        int dim = lungimeSir();
+        for (int i = 0; i < dim; i++)
+            if (word[i] == c)
+                aparitii++;
+        return aparitii;
+    }
+};

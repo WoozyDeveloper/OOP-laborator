@@ -1,0 +1,45 @@
+/*
+Să se definească o clasă care implementează metodele:
+- int plus(int x, int y), care returnează suma valorilor primite la apelul metodei;
+- int minus(int x, int y), care returnează diferenta valorilor primite la apelul metodei;
+- int inmultit(int x, int y), care returnează produsul valorilor primite la apelul metodei;
+- float impartit(int x, int y), care returnează catul valorilor primite la apelul metodei;
+şi apoi să se scrie aplicaţia care utilizează această clasă. Considerati si cazul in care in cadrul 
+clasei aveti atributele de tip int x si y, caz in care metodele nu vor mai avea parametrii.
+Observaţie: În cazul împărţirii, trebuie verificată validitatea operaţiei (împărţitor diferit de zero). În cazul în care operaţia este imposibilă, trebuie afişat un mesaj de eroare.
+*/
+
+#include<iostream>
+using namespace std;
+class clasa
+{
+private:
+    static const int a = 2, b = 3;
+public:
+    int plus(int x = a, int y = b)
+    {
+        return x + y;
+    }
+    int minus(int x = a, int y = b)
+    {
+        return x - y;
+    }
+    int inmultire(int x = a, int y = b)
+    {
+        return x * y;
+    }
+    float impartire(int x = a, int y = b)
+    {
+        if (y != 0)
+            return x / y;
+        cout << "Nu se poate efectua impartirea la 0";
+        return -1;
+    }
+};
+
+int main()
+{
+    clasa c;
+    cout << c.inmultire();
+    return 0;
+}

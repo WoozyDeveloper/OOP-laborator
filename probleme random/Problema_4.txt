@@ -1,0 +1,44 @@
+/*
+Să se scrie programul care implementează clasa Numar cu un atribut de tip int val şi care, în 
+cadrul funcţiei main(), declară un obiect de tipul clasei şi apoi un pointer la acesta, prin 
+intermediul cărora se va afişa pe ecran rezultatul adunării a două numere de tip Numar cu 
+valorile preluate de la tastatură in cadrul unor obiecte Numar. Implementati metoda int 
+suma_nr(Numar) care realizeaza suma în cadrul clasei şi o returneaza ca un int, metoda care 
+insumeaza cele doua obiecte (curent si parametru). Implementati metoda in cadrul clasei si alta metoda cu acelas scop, dar nume diferit, in afara clasei.
+*/
+
+#include<iostream>
+using namespace std;
+class Numar
+{
+private:
+    int nr;
+public:
+    Numar(int val)
+    {
+        nr = val;
+    }
+    int operator+(Numar nr2)
+    {
+        return nr + nr2.nr;
+    }
+    void operator=(Numar nr2)
+    {
+        nr = nr2.nr;
+    }
+    int getNum()
+    {
+        return nr;
+    }
+};
+
+int main()
+{
+    Numar a(43);
+    Numar& b = a;
+    int x, y;
+    cin >> x >> y;
+    Numar nr1(x), nr2(y);
+    b = nr1 + nr2;
+    cout << b.getNum();
+}

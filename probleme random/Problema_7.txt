@@ -1,0 +1,57 @@
+/*
+Să se scrie un program care implementează clasa Aritmetica cu două atribute a și b de tip 
+numeric (int, float sau double) si metode setter si getter adecvate. Implementați metoda suma()
+în interiorul clasei și metoda diferenta() ce apartine de asemenea clasei, dar e definita în afara 
+clasei, metode care vor fi apelate prin intermediul unui obiect al clasei Aritmetica. În funcția
+principală main() instanțiați trei obiecte de tip Aritmetica. Modificati atributele a si b la fiecare obiect in parte folsind metodele de tip setter. Aplicați asupra lor operațiile de adunare și scădere pe care le-ați implementat prin metodele suma() și diferenta(). Metodele returneaza 
+valorile numerice corespunzatoare operatiei folosind cele doua atribute ale clasei valori ce le 
+veti afisa in main(). La fiecare grup de operatii adunare/scadere afisati valorile atributelor 
+obiectului folosind metodele de tip getter.
+*/
+
+#include<iostream>
+
+using namespace std;
+
+template<typename T>
+class Aritmetica
+{
+private:
+    T a, b;
+public:
+    void SetA(T val) { a = val; }
+    void SetB(T val) { b = val;}
+    T GetA() { return a; }
+    T GetB() { return b; }
+    T suma();
+    T diferenta();
+};
+template<typename T>
+T Aritmetica<T>::suma()
+{
+    return a + b;
+}
+template<typename T>
+T Aritmetica<T>::diferenta()
+{
+    return a - b;
+}
+
+int main()
+{
+    Aritmetica<int> x, y, z;
+    x.SetA(2);x.SetB(3);
+    y.SetA(4); y.SetB(4);
+    z.SetA(8); z.SetB(5);
+    cout << "X\n";
+    cout << x.GetA() << '+' << x.GetB() << '=' << x.suma() << '\n';
+    cout << x.GetA() << '-' << x.GetB() << '=' << x.diferenta() << "\n\nY\n";
+
+    cout << y.GetA() << '+' << y.GetB() << '=' << y.suma() << '\n';
+    cout << y.GetA() << '-' << y.GetB() << '=' << y.diferenta() << "\n\nZ\n";
+
+    cout << z.GetA() << '+' << z.GetB() << '=' << z.suma() << '\n';
+    cout << z.GetA() << '-' << z.GetB() << '=' << z.diferenta() << '\n';
+    
+    return 0;
+}

@@ -1,0 +1,55 @@
+/*
+Declarati o clasa Fractie care are doua atribute intregi de tip private a si b pentru numarator si 
+numitor. Definiti doua metode de tip set() respectiv get() pentru fiecare din atributele clasei. 
+Instantiati doua obiecte de tip Fractie si afisati atributele initiale si cele obtinute dupa 
+folosirea metodelor set(). Definiti o metoda simplifica() apelata cu un obiect pentru care au 
+fost apelate metodele de tip set(), care determina divizorii numitorului si numaratorului, ii afiseaza si realizeaza simplificarea fractiei, afisand in metoda si rezultatul obtinut (noua fractie 
+numarator/numitor).
+*/
+
+#include <iostream>
+using namespace std;
+
+int cmmdc(int a, int b)
+{
+    int r;
+    while (b)
+    {
+        r = a % b;
+        a = b;
+        b = r;
+    }
+    return a;
+}
+
+class Fractie
+{
+private:
+    int a, b;
+public:
+    void setA(int x) { a = x; }
+    void setB(int x) { b = x; }
+    int getA() { return a; }
+    int getB() { return b; }
+    void simplifica()
+    {
+        int CMMDC = cmmdc(a, b);
+        if(CMMDC)
+            a /= CMMDC,b /= CMMDC;
+    }
+};
+
+int main()
+{
+    Fractie* x = new Fractie;
+    int numitor, numarator;
+    cout << "Numitor:";
+    cin >> numarator;
+    cout << "Numitor:";
+    cin >> numitor;
+    x->setA(numarator);
+    x->setB(numitor);
+    cout << x->getA() << '/' << x->getB() << '=';
+    x->simplifica();
+    cout << x->getA() << '/' << x->getB();
+}

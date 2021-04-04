@@ -1,0 +1,65 @@
+/*
+Pornind de la clasa Complex, ex.4, să se implementeze operațiile de adunare, scădere, 
+înmulțire și împărțire pentru numere complexe prin metode corespunzătoare implementate la 
+alegere în clasă și/sau în afara ei. Testați aceste metode prin instanțierea unor obiecte.
+Metodele vor returna obiecte de tip Complex si in main() vor fi afisate rezultatele folosind metode accesor.
+*/
+
+#include <iostream>
+using namespace std;
+class complex
+{
+private:
+    int parte_reala, parte_imaginara;
+public:
+    void setReal(int nr)
+    {
+        parte_reala = nr;
+    }
+    void setImg(int nr)
+    {
+        parte_imaginara = nr;
+    }
+    complex operator+(complex x)
+    {
+        parte_reala += x.parte_reala;
+        parte_imaginara += x.parte_imaginara;
+        return *this;
+    }
+    complex operator-(complex x)
+    {
+        parte_reala -= x.parte_reala;
+        parte_imaginara -= x.parte_imaginara;
+        return *this;
+    }
+    complex operator*(complex x)
+    {
+        parte_reala = parte_reala * x.parte_reala + parte_imaginara * x.parte_imaginara;
+        parte_imaginara = parte_reala * x.parte_imaginara + parte_imaginara * x.parte_reala;
+        return *this;
+    }
+    void operator=(complex x)
+    {
+        parte_reala = x.parte_reala;
+        parte_imaginara = x.parte_imaginara;
+    }
+    void print()
+    {
+        cout << parte_reala << ' ' << parte_imaginara << 'i' << '\n';
+    }
+};
+
+int main()
+{
+    complex a, b;
+
+    a.setReal(2);
+    a.setImg(3);
+
+    b.setReal(3);
+    b.setImg(3);
+
+    complex c;
+    c = a * b;
+    c.print();
+}

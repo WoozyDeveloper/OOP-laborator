@@ -1,0 +1,77 @@
+/*
+Să se scrie o aplicaţie C/C++ care foloseşte o structură de date cu numele Scerc care conţine 
+raza ca şi o variabilă de tip întreg. Într-un program C/C++, declaraţi două variabile c1, c2 de 
+tip Scerc şi calculaţi aria şi circumferinţa lor pentru valori ale razei introduse de la tastatură cu două metode definite. Aceleaşi cerinţe vor fi implementate în aceiasi aplicaţie folosind o clasă 
+numită Cerc cu atributul raza de tip private, clasă ce va conţine pe lângă metodele de calcul 
+ale ariei şi perimetrului un constructor explicit cu parametru, un destructor şi o metodă de 
+afişare raza.
+Extindeţi aplicaţia astfel încât să definiţi mai multe obiecte de tip Cerc la care să accesaţi 
+metodele specifice folosind obiectele instanţiate, pointeri la obiecte, referinţe la obiecte. 
+Introduceţi o metodă de tip accesor, getRaza() care permite accesul la data privată raza si care 
+sa o folositi pentru a afisa in main() raza obiectelor.
+*/
+
+#include <iostream>
+#define PI 3.1415926
+
+using namespace std;
+
+class Cerc
+{
+private: 
+    int raza;
+public:
+    Cerc(int);
+    ~Cerc();
+    float GetArie();
+    float GetCirc();
+    int getRaza();
+};
+
+Cerc::Cerc(int raza_noua)
+{
+    raza = raza_noua;
+}
+
+Cerc::~Cerc() {}
+
+int Cerc::getRaza()
+{
+    return raza;
+}
+
+float Cerc::GetArie()
+{
+    return PI * raza * raza;
+}
+float Cerc::GetCirc()
+{
+    return 2 * PI * raza;
+}
+
+struct Scerc
+{
+    int raza;
+    float GetArie();
+    float GetCirc();
+
+};
+
+float Scerc::GetArie()
+{
+    return PI * raza * raza;
+}
+float Scerc::GetCirc()
+{
+    return 2 * PI * raza;
+}
+
+int main()
+{
+    Scerc c1, c2;
+    cin >> c1.raza >> c2.raza;
+    cout << c1.GetArie();
+    cout << "\n----------------------------\n";
+    Cerc a(5), b(4);
+    cout << a.getRaza() << ' ' << b.getRaza();
+}
