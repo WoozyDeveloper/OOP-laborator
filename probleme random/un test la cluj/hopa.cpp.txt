@@ -1,0 +1,145 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <string>
+using namespace std;
+const int initProd = 4;
+class Comanda
+{
+private:
+	char numeFurnizor[50];
+	int nrProduse;
+	double* preturi;
+public:
+	Comanda()
+	{
+		this->nrProduse = initProd;
+		preturi = (double*)malloc(sizeof(double) * initProd);
+		strcpy(this->numeFurnizor, "Nespecificat\0");
+	}
+	Comanda(const Comanda& c)
+	{
+		this->nrProduse = c.nrProduse;
+		strcpy(this->numeFurnizor, c.numeFurnizor);
+		this->preturi = c.preturi;
+	}
+	Comanda(const char *nume, int nr)
+	{
+		strcpy(this->numeFurnizor, nume);
+		this->nrProduse = nr;
+		preturi = (double*)malloc(sizeof(double) * this->nrProduse);
+	}
+	~Comanda(){}
+	void SetName(const char *nume)
+	{
+		strcpy(this->numeFurnizor, nume);
+	}
+	void SetNrProduse(int nr)
+	{
+		this->nrProduse = nr;
+	}
+
+	char* GetName()
+	{
+		return this->numeFurnizor;
+	}
+
+	int GetNrProduse()
+	{
+		return this->nrProduse;
+	}
+
+	void SetPreturi(double* hopa)
+	{
+		for (int i = 0; i < this->nrProduse; i++)
+			this->preturi[i] = hopa[i];
+	}
+
+	double* GetPreturi()
+	{
+		return this->preturi;
+	}
+
+	double PretTotal()
+	{
+		double sum = 0;
+		for (int i = 0; i < this->nrProduse; i++)
+			sum += this->preturi[i];
+		return sum;
+	}
+
+	bool verifica(double val)
+	{
+		for (int i = 0; i < this->nrProduse; i++)
+			if (this->preturi[i] >= val)
+				return false;
+		return true;
+	}
+
+	double GetElementFromIndex(int index)
+	{
+		return this->preturi[index];
+	}
+};
+
+Comanda* CelMaiMic(Comanda* c, int dim)
+{
+	Comanda* comandaBuna = &c[0];
+	double comandaMinima = c[0].PretTotal();
+	for (int i = 1; i < dim; i++)
+		if (c[i].PretTotal() < comandaMinima)
+		{
+			comandaMinima = c[i].PretTotal();
+			comandaBuna = &c[i];
+		}
+	return comandaBuna;
+}
+
+int main()
+{
+	double p1[] = { 2,1,3,4 };
+	double p2[] = { 1,1,1,1 };
+	double p3[] = { 2000,1,1,1 };
+	double p4[] = { 1,2,3,2 };
+
+
+	Comanda c[4];
+	c[0].SetName("George");
+	c[0].SetNrProduse(4);
+	c[0].SetPreturi(p1);
+
+	c[1].SetName("Adi");
+	c[1].SetNrProduse(4);
+	c[1].SetPreturi(p2);
+
+	c[2].SetName("Hopa");
+	c[2].SetNrProduse(4);
+	c[2].SetPreturi(p3);
+
+	c[3].SetName("Tropa");
+	c[3].SetNrProduse(4);
+	c[3].SetPreturi(p4);
+	cout << "DA";
+	for (int i = 0; i < 4; i++)
+	{
+		cout << i + 1 << '\n';
+		cout << c[i].GetName() << ' ' << c[i].GetNrProduse() << '\n';
+		for (int x = 0; x < c[i].GetNrProduse(); x++)
+			cout << c[i].GetElementFromIndex(x) << ' ';
+	}
+
+	cout << "\n-----------------------------------------------------";
+	double total = 0;
+	for (int i = 0; i < 4; i++)
+		total += c[i].PretTotal();
+	cout << "\nPRET TOTAL: " << total;
+	
+	cout << "\n-----------------------------------------------------\n";
+
+	int val;
+	cin >> val;
+	for (int i = 0; i < 4; i++)
+		if (c[i].verifica(val))
+			cout << i + 1 << ' ';
+	cout << "\n-----------------------------------------------------";
+
+}
