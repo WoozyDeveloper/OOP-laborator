@@ -49,6 +49,7 @@ int main()
         getline(iss, word, delimiter);
         int count = 0;
         int pos = input.find(word, 0);
+        ///fol un map pt numaratoare
         while (pos != string::npos)
         {
             if (pos < input.length() && (input[pos - 1] < 'a' || input[pos - 1] > 'z'))
@@ -75,7 +76,7 @@ int main()
     {
         if (aux[myQueue2.top()] != -112)
             cout << myQueue2.top() << " => " << aux[myQueue2.top()] << '\n';
-        aux[myQueue.top()] = -112;
+        aux[myQueue2.top()] = -112;
         myQueue2.pop();
     }
 
